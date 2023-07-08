@@ -14,7 +14,7 @@ from database import(
 )
 
 
-origins = ['https://localhost:3000']
+origins = ['http://localhost:3000']
 
 app.add_middleware(
     CORSMiddleware,
@@ -40,7 +40,7 @@ async def get_todo_by_id(title):
         return response
     raise HTTPException(404, f"ther is no TODO item with this title {title}")
 
-@app.post("/api/todo",response_model=Todo)
+@app.post("/api/todo", response_model=Todo)
 async def post_todo(todo:Todo):
     response = await create_todo(todo.dict())
     if response:
